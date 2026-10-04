@@ -2,7 +2,8 @@
   {{ .Content }}
 
     <!-- Render sticky left navigation menu -->
-    <div class='fixed-nav'>
+    <input type="checkbox" id="toggle-trigger" class="hidden-checkbox">
+    <label for="toggle-trigger" class='fixed-nav'>
         {{ if eq .Params.nav_to_top_weight "first" }}
             {{ $fnav_title := "Start" }}{{ with .Params.nav_to_top_title }}{{ $fnav_title = . }}{{ end }}
             <a class='fn-item' item_index='{{ 0 }}' href='./#site-head'>{{ $fnav_title | safeHTML }}</a>
@@ -31,7 +32,7 @@
               <span class="nav-label">{{ $fnav_title | safeHTML }}</span>
             </a>
         {{ end }}
-    </div>
+  </label>
 
 
   {{ range $index_val, $elem_val := .Site.Menus.main }}
