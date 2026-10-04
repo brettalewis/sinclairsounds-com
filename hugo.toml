@@ -10,11 +10,11 @@ hidedesignbyline = true
 
 [[params.ssdc_socials]]
 name = "instagram"
-url = "https://www.instagram.com/connorlewis"
+url = "https://www.instagram.com/sinclairsounds"
 
-[[params.ssdc_socials]]
-name = "linkedin"
-url = "https://www.linkedin.com/in/connor-lewis-9063ab383/"
+#[[params.ssdc_socials]]
+#name = "linkedin"
+#url = "https://www.linkedin.com/in/connor-lewis-9063ab383/"
 
 [markup]
   [markup.goldmark]
