@@ -11,7 +11,7 @@
         {{ range $index_val, $elem_val := .Site.Menus.main }}
         {{ with .Page }}
             {{ $fnav_title := .Title }}{{ with .Params.navigation_menu_title }}{{ $fnav_title = . }}{{ end }}
-            <a class='fn-item' item_index='{{ (add $index_val 1) }}' href='#{{ anchorize $fnav_title }}'>
+            <a class='fn-item' item_index='{{ (add $index_val 1) }}' href='./#{{ anchorize $fnav_title }}'>
               <div class="sound-wave">
                 <div class="bar"></div>
                 <div class="bar"></div>

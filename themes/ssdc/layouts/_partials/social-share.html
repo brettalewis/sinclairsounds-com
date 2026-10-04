@@ -14,7 +14,7 @@
   <div id="sharing" class="mt3 ssdc-socials">
     {{ range $service :=  $services }}
       {{ $href := index $hrefs .name }}
-      <a href="{{ $href }}" class="aldc-social-link {{ .name }} no-underline" aria-label="share on {{ .label }}">
+      <a href="{{ $href }}" class="ssdc-social-link {{ .name }} no-underline" aria-label="share on {{ .label }}">
         {{ with .icon }}
         <span class="icon"> {{ . }}</span>
         {{ end }}
