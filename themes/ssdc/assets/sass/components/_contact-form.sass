@@ -1,0 +1,42 @@
+@use '../abstracts'
+
+/** Components **/
+
+.fs-form
+  display: grid
+  row-gap: 1.5rem
+
+.fs-field
+  display: flex
+  flex-direction: column
+  row-gap: 0.5rem
+
+.fs-label
+  color: abstracts.$text-default-color
+  display: block
+  font-size: 1rem
+  line-height: 1.25rem
+
+.fs-description
+  color: abstracts.$text-muted-color
+  display: block
+  font-size: 1rem
+  line-height: 1.25rem
+
+.fs-button-group
+  display: flex
+  flex-direction: row-reverse
+  column-gap: 1.5rem
+
+.fs-button
+  padding: 0.75rem 2rem
+
+.fs-input
+  height: 3rem
+  padding-left: 1rem
+  padding-right: 1rem
+
+.fs-textarea
+  padding: 0.5rem 0.75rem
+  resize: vertical
+  height: 8rem

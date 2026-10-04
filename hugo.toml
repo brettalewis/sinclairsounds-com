@@ -1,0 +1,23 @@
+title = 'Connor Lewis | Audio Engineer'
+baseURL = 'https://sinclair-sounds.com'
+languageCode = 'en-us'
+theme = 'ssdc'
+
+[params]
+description = "This is the website of Connor Lewis."
+favicon = "/favicon.ico"
+hidedesignbyline = true
+
+[[params.ssdc_socials]]
+name = "instagram"
+url = "https://www.instagram.com/connorlewis"
+
+[[params.ssdc_socials]]
+name = "linkedin"
+url = "https://www.linkedin.com/in/connor-lewis-9063ab383/"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.parser]
+      [markup.goldmark.parser.attribute]
+        block = true

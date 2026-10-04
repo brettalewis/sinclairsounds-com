@@ -1,0 +1,95 @@
+.box-container
+  display: flex
+  flex-wrap: wrap
+  justify-content: center
+  margin: 0
+  margin-top: 1.4em
+  width: 100%
+  padding: unset
+
+.box
+  list-style-type: none
+  width: 200px
+  opacity: 0
+  &.moving
+    transform: translate3d(0, 40px, 0)
+  transition: opacity 0.2s, transform 0.35s
+  &.show
+    opacity: 1
+    &.moving
+      transform: translate3d(0, 0, 0)
+    transition: opacity 0.4s, transform 0.35s
+  .inner
+    padding: 10px
+    position: relative
+  a
+    display: block
+    width: 100%
+    height: auto
+    position: relative
+    overflow: hidden
+    &::before
+      content: ''
+      display: block
+      width: 100%
+      height: 100%
+      position: absolute
+      top: 0
+      left: 0
+      background: #000
+      z-index: 99
+      opacity: 0
+      transition: opacity 0.4s
+  &.moving img
+    width: calc(100% + 50px)
+    max-width: calc(100% + 50px)
+    transition: opacity 0.35s, transform 0.35s
+    transform: translate3d(-40px, 0, 0)
+  figure
+    display: flex
+    flex-direction: column
+    padding: 0
+    margin: 5px
+  figcaption
+    background-color: #222222
+    color: white
+    font: italic smaller sans-serif
+    padding: 3px
+    text-align: center
+
+
+// @media (min-width: 390px)
+//  .three-cols
+//    .box
+//      width: 50%
+
+// @media (min-width: 576px)
+//  .intro
+//    max-height: 70vh
+//    min-height: 640px
+//    padding-top: 0px
+//    h1
+//      font-size: 4.3em
+//      text-align: left
+//  .tagline
+//    font-size: 100%
+
+//  .three-cols
+//    .box
+//      width: 33.3%
+//      &:nth-child(3n+0)
+//        margin-right: 0
+//      &:nth-child(3n+1)
+//        margin-left: 0
+  
+  .mcbutton
+    width: auto
+
+.box
+  &:hover
+    img
+      transform: translate3d(0, 0, 0)
+      transition: opacity 0.35s, transform 0.35s
+    a::before
+      opacity: 0.2
+      transition: opacity 0.35s

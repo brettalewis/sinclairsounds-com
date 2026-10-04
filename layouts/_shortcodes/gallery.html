@@ -1,0 +1,48 @@
+{{- $name := (.Get "name") -}}
+{{- $imagesName := (.Get "images") -}}
+{{- $images := (index .Page.Params $imagesName) -}}
+{{- $videosName := (.Get "videos") -}}
+{{- $videos := (index .Page.Params $videosName) -}}
+{{- if or $images $videos -}}
+    <h1>{{ $name }}</h1>
+    <ul class="box-container three-cols">
+    {{- if $images -}}
+        {{- range $images -}}
+            <li class="box show moving">
+            <div class="inner">
+                <a href="{{ replace .image "image/upload/" "image/upload/c_scale,f_auto,h_700,q_auto:best/" }}" class="glightbox-{{ urlize $name }}"{{ with .title }} data-title="{{ . }}"{{ end }}{{ with .description }} data-description="{{ . }}"{{ end }}>
+                <img src="{{ replace .image "image/upload/" "image/upload/c_auto,g_auto,h_200,w_250/" }}" alt="image" />
+                </a>
+            </div>
+            </li>
+        {{- end -}}
+    {{- end -}}
+    {{- if $videos -}}
+        {{- range $videos -}}
+            {{- $url := (add "https://vimeo.com/api/oembed.json?url=https:" .url) -}}
+            {{- $thumbnail := .thumbnail }}
+            {{- with try (resources.GetRemote $url ) -}}
+                {{- with .Value -}}
+                    {{- $data := . | transform.Unmarshal -}}
+                    {{- $thumbnail = (index $data "thumbnail_url") -}}
+                {{- end -}}
+            {{- end -}}
+            <li class="box show">
+                <a href="{{ .url }}" class="glightbox-{{ urlize $name }}"{{ with .title }} data-title="{{ . }}"{{ end }}{{ with .description }} data-description="{{ . }}"{{ end }}>
+                    <figure>
+                        <img src="{{ $thumbnail }}" alt="{{ with .title }}{{.}}{{else}}image{{end}}" />
+                        <figcaption>{{.title}}</figcaption>
+                    </figure>
+                </a>
+            </li>
+        {{- end -}}
+    {{- end -}}
+    </ul>
+
+    <script>
+    window.onload = GLightbox({
+        selector: '.glightbox-{{ urlize $name }}',
+        loop: true
+    });
+    </script>
+{{- end -}}

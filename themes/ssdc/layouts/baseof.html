@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="{{ site.Language.Locale }}" dir="{{ or site.Language.Direction `ltr` }}">
+  <head>
+    {{ partial "head.html" .  }}
+    {{ block "head" . }}{{ partials.Include "head-additions.html" . }}{{ end }}
+    {{ block "script" . }}{{ range .Resources.Match "*.js" }}<script src="{{ .RelPermalink }}"></script>{{ end }}{{ end }}
+  </head>
+
+  <body class="{{ $.Param "body_classes"  | default "" }}{{ with getenv "HUGO_ENV" }} {{ . }}{{ end }}">
+    {{ block "header" . }}{{ partial "site-header.html" . }}{{ end }}
+    <main role="main">
+      {{ block "main" . }}
+        This will be replaced with content from the 
+        corresponding "define" action found in the template
+        to which this base template is applied.
+      {{ end }}
+    </main>
+    {{ block "footer" . }}{{ partial "site-footer.html" . }}{{ end }}
+  </body>
+      <!-- We do need jQuery to be loaded before HugoScroll script -->
+
+    {{ $scriptJquery := resources.Get "js/jquery-3.6.3.min.js" }}
+
+    <!-- The main JavaScript files for HugoScroll -->
+    {{ $scriptIndex := resources.Get "js/index.js" }}
+    {{ $scriptPolyfill := resources.Get "js/css-vars-ponyfill.min.js" }}
+    {{ $js := slice $scriptJquery $scriptIndex $scriptPolyfill | resources.Concat "js/script.js" | resources.Minify | resources.Fingerprint }}
+
+    <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" ></script>
+
+    <!-- activate css-vars-ponyfill.min.js -->
+    <script>cssVars();</script>
+
+
+</html>

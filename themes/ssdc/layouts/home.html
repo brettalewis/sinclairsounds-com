@@ -1,0 +1,57 @@
+{{ define "main" }}
+  {{ .Content }}
+
+    <!-- Render sticky left navigation menu -->
+    <div class='fixed-nav'>
+        {{ if eq .Params.nav_to_top_weight "first" }}
+            {{ $fnav_title := "Start" }}{{ with .Params.nav_to_top_title }}{{ $fnav_title = . }}{{ end }}
+            <a class='fn-item' item_index='{{ 0 }}' href='./#site-head'>{{ $fnav_title | safeHTML }}</a>
+        {{ end }}
+        {{ $last_index_val := 0 }}
+        {{ range $index_val, $elem_val := .Site.Menus.main }}
+        {{ with .Page }}
+            {{ $fnav_title := .Title }}{{ with .Params.navigation_menu_title }}{{ $fnav_title = . }}{{ end }}
+            <a class='fn-item' item_index='{{ (add $index_val 1) }}' href='#{{ anchorize $fnav_title }}'>
+              <div class="sound-wave">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+             </div>
+             <span class="nav-label">{{ .Name }}</span>
+            </a>
+            {{ $last_index_val = $index_val }}
+        {{ end }}
+        {{ end }}
+        {{ if eq .Params.nav_to_top_weight "last" }}
+            {{ $fnav_title := "Start" }}{{ with .Params.nav_to_top_title }}{{ $fnav_title = . }}{{ end }}
+            <a class='fn-item' item_index='{{ (add $last_index_val 2) }}' href='./#site-head'>
+              <div class="sound-wave"></div>
+              <span class="nav-label">{{ $fnav_title | safeHTML }}</span>
+            </a>
+        {{ end }}
+    </div>
+
+
+  {{ range $index_val, $elem_val := .Site.Menus.main }}
+      {{ with .Page }}
+      {{ if .Title }}
+      {{ $fnav_title := .Title }}{{ with .Params.navigation_menu_title }}{{ $fnav_title = . }}{{ end }}
+      <div class='post-holder{{ if and (ne site.Params.invertSectionColors true) (not (modBool $index_val 2)) }} dark{{ else if and (eq site.Params.invertSectionColors true) (modBool $index_val 2) }} dark{{ end }}'>
+          <article id='{{ anchorize $fnav_title }}' class='post {{ if eq $index_val 0 }}first{{ end }} {{ if eq (add $index_val 1) (len .Site.Menus.main) }}last{{ end }}'>
+              <header class="post-header">
+                  <h2 class="post-title">{{ .Title | emojify | safeHTML }}</h2>
+              </header>
+                <section class='post-content{{ if eq .Params.layout "two-column" }} two-column{{ end }}'>
+                  {{ .Content }}
+              </section>
+          </article>
+          <div class='post-after{{ if and (ne site.Params.invertSectionColors true) (modBool $index_val 2) }} light{{ else if and (eq site.Params.invertSectionColors true) (not (modBool $index_val 2)) }} light{{ end }}'></div>
+      </div>
+      {{ end }}
+      {{ end }}
+  {{ end }}
+
+{{ end }}
+

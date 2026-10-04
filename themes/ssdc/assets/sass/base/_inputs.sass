@@ -1,0 +1,22 @@
+@use '../abstracts'
+
+%input
+  border-radius: 0.75rem
+  border-width: 0
+  box-shadow: abstracts.$border-default-color 0 0 0 1px inset
+  color: abstracts.$text-default-color
+  font-size: 1rem
+  line-height: 1.5rem
+  outline: none
+  &:focus-visible
+    box-shadow: abstracts.$border-active-color 0 0 0 1px inset
+  &:placeholder
+    color: abstracts.$text-muted-color
+
+%input-noappearance
+  appearance: none
+
+input,
+textarea
+  @extend %input
+  @extend %input-noappearance

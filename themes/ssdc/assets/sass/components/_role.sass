@@ -1,0 +1,26 @@
+@use '../abstracts'
+@use '../vendors/mq'
+
+.role-row
+  display: block
+  line-height: 1.25rem
+  width: 100%
+  padding-bottom: 1rem
+  +mq.mq($from: 'desktop', $media-type: 'screen')
+    display: table
+    padding: 0 2rem .25rem
+  span
+    display: block
+    +mq.mq($from: 'desktop', $media-type: 'screen')
+      display: table-cell
+      &.show,
+      &.role
+        width: 40%
+      &.org
+        width: 20%
+        text-align: right
+    &.show
+      font-weight: bolder
+      text-transform: uppercase
+    &.org
+      font-style: italic

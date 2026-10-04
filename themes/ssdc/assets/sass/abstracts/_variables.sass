@@ -1,0 +1,100 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass variables.
+// -----------------------------------------------------------------------------
+
+/// Regular font family
+/// @type List
+$text-font-stack: 'Avenir Next', 'Avenir', 'Helvetica', 'Arial', sans-serif !default
+
+/// Code (monospace) font family
+/// @type List
+$code-font-stack: 'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Monaco', monospace !default
+
+/// Copy text color
+/// @type Color
+$text-color: rgb(34, 34, 34) !default
+
+/// Main brand color
+/// @type Color
+$brand-color: rgb(229, 0, 80) !default
+
+/// Light grey
+/// @type Color
+$light-grey: rgb(244, 244, 244) !default
+
+/// Medium grey
+/// @type Color
+$mid-grey: rgb(153, 153, 153) !default
+
+/// Dark grey
+/// @type Color
+$dark-grey: rgb(68, 68, 68) !default
+
+/// Black
+/// @type Color
+$black: rgb(0, 0, 0) !default
+
+/// Green
+/// @type Color
+$green: rgb(40, 167, 69) !default
+
+/// Red
+/// @type Color
+$red: rgb(237, 67, 55) !default
+
+
+/// Copy text color
+/// @type Color
+$copy-text-color: rgb(34, 34, 34) !default
+
+/// Heading text color
+/// @type Color
+$heading-text-color: rgb(34, 34, 34) !default
+
+/// Background color
+/// @type Color
+$background-color: $light-grey !default
+
+/// Header color
+/// @type Color
+$header-color: $black !default
+
+/// Footer color
+/// @type Color
+$footer-color: $black !default
+
+/// Success color
+/// @type Color
+$success-color: $green !default
+
+/// Failure color
+/// @type Color
+$failure-color: $red !default
+
+$border-active-color: #da7105 !default
+$border-default-color: #d1d1d1 !default
+$highlight-color: #fdcf4c !default
+$primary-color: #b64e08 !default
+$primary-active-color: #79320e !default
+$text-default-color: $copy-text-color !default
+$text-muted-color: #4f4f4f !default
+
+/// Container's maximum width
+/// @type Length
+$max-width: 1180px !default
+
+/// Breakpoints map
+/// @prop {String} keys - Keys are identifiers mapped to a given length
+/// @prop {Map} values - Values are actual breakpoints expressed in pixels
+$breakpoints: (
+  mobile: 480px,
+  tablet: 800px,
+  desktop: 980px,
+  wide: 1300px,
+)
+
+/// Relative or absolute URL where all assets are served from
+/// @type String
+/// @example scss - When using a CDN
+///   $base-url: 'https://cdn.example.com/assets/'
+$base-url: '/assets/' !default

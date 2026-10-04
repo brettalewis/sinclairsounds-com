@@ -1,0 +1,30 @@
+<nav role="navigation">
+  <div id="inner-nav">
+  <a href="{{ .Site.Home.RelPermalink }}" class="home-link">
+  {{ with .Site.Params.site_logo }}
+    <img src="{{ relURL . }}" alt="{{ $.Site.Title }}" />
+  {{ else }}
+    {{ .Site.Title }}
+  {{ end }}
+  </a>
+{{ if .Site.Menus.main }}
+  <ul>
+  {{ range .Site.Menus.main }}
+    <li>
+      <a href="#{{with .Page}}{{ anchorize .Title }}{{end}}" title="{{ i18n "pageTitle" . }}">
+        <div class="sound-wave">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+        <span class="nav-label">{{ .Name }}</span>
+      </a>
+    </li>
+  {{ end }}
+  </ul>
+{{ end }}
+  </div>
+</nav>
+

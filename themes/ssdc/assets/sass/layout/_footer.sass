@@ -1,0 +1,51 @@
+@use '../abstracts'
+@use '../vendors/mq'
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the footer of the site/application.
+// -----------------------------------------------------------------------------
+footer
+  background-color: abstracts.$header-color
+  padding: 1rem
+  width: 100%
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  align-items: center
+  .copyright
+    padding-bottom: .5rem
+    color: #bababa
+    opacity: 1
+    transition: all .15s ease-in;
+    +abstracts.on-event
+      text-decoration: none
+      color: #fff
+      opacity: 1
+  +mq.mq($from: 'tablet', $media-type: 'screen')
+    flex-direction: row
+
+.ssdc-socials
+  display: flex
+  column-gap: .5rem
+  a
+    color: #bababa
+    display: inline-block
+    fill: currentColor
+    vertical-align: middle
+    transition: all .15s ease-in;
+    +abstracts.on-event
+      text-decoration: none
+    .icon
+      svg
+        width: 24px
+        height: 24px
+
+.new-window
+  opacity: 0
+  display: inline-block
+  height: 24px
+  vertical-align: top
+  margin-left: -5px
+  svg
+    vertical-align: top
+  +abstracts.when-inside(".link-transition:hover")
+    opacity: 1

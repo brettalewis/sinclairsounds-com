@@ -1,0 +1,19 @@
+@use '../abstracts'
+
+
+button
+  background-color: abstracts.$primary-color
+  border-radius: 0.75rem
+  color: white
+  cursor: pointer
+  font-size: 1.125rem
+  font-weight: 600
+  line-height: 1.5rem
+  transition-duration: 200ms
+  transition-property: background-color
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1)
+  &:hover
+    background-color: abstracts.$primary-active-color
+  &:focus-visible
+    background-color: abstracts.$primary-active-color
+    outline: 4px solid abstracts.$highlight-color

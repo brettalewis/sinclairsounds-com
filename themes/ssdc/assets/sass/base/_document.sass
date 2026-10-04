@@ -1,0 +1,24 @@
+@use "../abstracts"
+
+// -----------------------------------------------------------------------------
+// This file contains very basic styles.
+// -----------------------------------------------------------------------------
+
+/**
+ * Set up a decent box model on the root element
+ */
+html
+  box-sizing: border-box
+  font: normal 100% / 1 abstracts.$text-font-stack
+  height: 100%
+
+/**
+ * Basic typography style for copy text
+ */
+body
+  color: abstracts.$text-color
+  background-color: abstracts.$background-color
+  display: flex
+  flex-direction: column
+  height: 100%
+  min-height: 100vh

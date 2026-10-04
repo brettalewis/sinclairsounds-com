@@ -1,0 +1,40 @@
+@use '../abstracts'
+@use '../vendors/mq'
+
+main
+  flex: 1
+  padding: .5rem 4rem
+  
+  section.two-column
+    display: flex
+    justify-content: space-between
+    flex-direction: column
+    gap: 2em
+    .photo
+      max-width: 450px
+      margin: 0 auto
+      width: 100%
+      
+    .bio
+      width: 100%
+    +mq.mq($from: 'desktop', $media-type: 'screen')
+      flex-direction: row
+      .photo
+        padding-top: 1rem
+        padding-right: 1rem
+        width: 450px
+      .bio
+        flex: 1
+  +abstracts.when-inside("body.flex-rev")
+    +mq.mq($from: 'desktop', $media-type: 'screen')
+      flex-direction: row-reverse
+
+  .post-holder
+    min-height: 300px
+    padding: 0 20%
+    &:last-of-type
+      min-height: 800px
+
+  .service-list
+    line-height: 1.5em
+    font-size: 20px
