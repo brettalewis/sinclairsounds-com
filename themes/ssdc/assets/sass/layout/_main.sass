@@ -3,7 +3,7 @@
 
 main
   flex: 1
-  padding: .5rem 4rem
+  padding: .25rem
   
   section.two-column
     display: flex
@@ -30,8 +30,10 @@ main
       flex-direction: row-reverse
 
   .post-holder
-    min-height: 300px
-    padding: 0 20%
+    min-height: 500px
+    padding: 0 .5rem
+    +mq.mq($from: 'desktop', $media-type: 'screen')
+      padding: 0 20%
     &:last-of-type
       min-height: 800px
 
